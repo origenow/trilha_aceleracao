@@ -499,7 +499,7 @@ export function PoloModaSection() {
             href="https://seller-br.tiktok.com/account/register?channel=BrunaSeller"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative overflow-hidden inline-flex items-center gap-2 font-display font-black text-white text-sm md:text-base px-8 py-4 rounded-full"
+            className="relative overflow-hidden inline-flex items-center gap-2 font-display font-black text-white text-sm md:text-base px-8 py-4 rounded-full cursor-pointer"
             style={{
               backgroundColor: "#F1204A",
               boxShadow: "0 8px 28px rgba(241,32,74,0.35)",
@@ -522,7 +522,7 @@ export function PoloModaSection() {
 
           <a
             href="#beneficios"
-            className="group inline-flex items-center gap-1.5 font-body text-sm font-medium relative pb-0.5"
+            className="group inline-flex items-center gap-1.5 font-body text-sm font-medium relative pb-0.5 cursor-pointer"
             style={{ color: "rgba(3,54,36,0.55)" }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(3,54,36,1)"; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(3,54,36,0.55)"; }}
@@ -631,7 +631,7 @@ export function PoloModaSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between px-5 py-4 rounded-2xl transition-colors duration-200"
+                    className="group flex items-center justify-between px-5 py-4 rounded-2xl transition-colors duration-200 cursor-pointer"
                     style={{
                       background: "rgba(3,54,36,0.05)",
                       border: "1px solid rgba(3,54,36,0.10)",

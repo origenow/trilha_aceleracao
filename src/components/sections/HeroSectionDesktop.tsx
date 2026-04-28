@@ -303,7 +303,7 @@ export function HeroSectionDesktop() {
             transition={{ delay: 0.8, duration: 0.7, type: "spring" }}
             whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(241, 32, 74, 0.6)" }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 md:mt-12 relative z-50 px-10 py-5 rounded-full text-white text-lg font-display font-black flex items-center gap-3 overflow-hidden group"
+            className="mt-8 md:mt-12 relative z-50 px-10 py-5 rounded-full text-white text-lg font-display font-black flex items-center gap-3 overflow-hidden group cursor-pointer"
             style={{ backgroundColor: "#F1204A" }}
           >
             {/* Brilho animado passando no botão */}
@@ -454,7 +454,7 @@ export function HeroSectionDesktop() {
                 {/* Skip Back 10s */}
                 <button
                   onClick={skipBack}
-                  className="w-12 h-12 rounded-full flex flex-col items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95"
+                  className="w-12 h-12 rounded-full flex flex-col items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
                   aria-label="Voltar 10 segundos"
                 >
@@ -465,7 +465,7 @@ export function HeroSectionDesktop() {
                 {/* Play/Pause */}
                 <button
                   onClick={togglePlay}
-                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95"
+                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
                   aria-label={isPlaying ? "Pausar" : "Reproduzir"}
                 >
@@ -490,7 +490,7 @@ export function HeroSectionDesktop() {
                 {/* Mute/Unmute */}
                 <button
                   onClick={toggleMute}
-                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95"
+                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
                   aria-label={isMuted ? "Ativar som" : "Silenciar"}
                 >
@@ -504,7 +504,7 @@ export function HeroSectionDesktop() {
                 {/* Fullscreen */}
                 <button
                   onClick={toggleFullscreen}
-                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95"
+                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 transition-all duration-300 hover:scale-110 hover:bg-white/30 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
                   aria-label="Tela cheia"
                 >

@@ -493,14 +493,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "0.4rem",
+              gap: "0.5rem",
               background: "transparent",
               border: "none",
               cursor: "pointer",
               color: "inherit",
               fontFamily: "'TikTokSansDisplay', sans-serif",
               fontWeight: 700,
-              fontSize: "0.75rem",
+              fontSize: "1rem",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
               lineHeight: 1,
@@ -540,8 +540,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               ref={iconRef}
               style={{
                 position: "relative",
-                width: 13,
-                height: 13,
+                width: 18,
+                height: 18,
                 flexShrink: 0,
                 display: "inline-flex",
                 alignItems: "center",

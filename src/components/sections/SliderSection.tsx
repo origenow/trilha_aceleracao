@@ -7,6 +7,20 @@ import { Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight as ChevronRightNav } from "lucide-react";
 import "swiper/css";
 
+const FloatingDoodle = ({
+  src, size = 40, top, left, right, bottom, delay = 0, rotate = 0, opacity = 0.10, reverse = false,
+}: {
+  src: string; size?: number; top?: string; left?: string; right?: string; bottom?: string;
+  delay?: number; rotate?: number; opacity?: number; reverse?: boolean;
+}) => (
+  <div
+    className={`absolute pointer-events-none ${reverse ? "animate-float-reverse" : "animate-float"}`}
+    style={{ top, left, right, bottom, width: size, height: size, animationDelay: `${delay}s`, opacity }}
+  >
+    <img src={src} alt="" className="w-full h-full object-contain" style={{ transform: `rotate(${rotate}deg)` }} />
+  </div>
+);
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
@@ -286,45 +300,110 @@ export function SliderSection() {
 
   return (
     <section id="acceleration-sliders" className="py-24 bg-white overflow-hidden relative z-10 w-full">
+      {/* Doodles decorativos */}
+      <FloatingDoodle src="/assets_new/manequim.svg" size={100} top="3%"   left="-1%"   rotate={12}  opacity={0.07} delay={0}   />
+      <FloatingDoodle src="/assets_new/5.svg"        size={60}  top="8%"   right="2%"   rotate={-20} opacity={0.08} delay={1.2} reverse />
+      <FloatingDoodle src="/assets_new/bolsa.svg"    size={85}  top="32%"  right="-1%"  rotate={15}  opacity={0.07} delay={0.6} />
+      <FloatingDoodle src="/assets_new/7.svg"        size={48}  top="55%"  left="1%"    rotate={-30} opacity={0.07} delay={1.8} reverse />
+      <FloatingDoodle src="/assets_new/camera.svg"   size={78}  bottom="20%" left="-1%" rotate={20}  opacity={0.06} delay={0.3} />
+      <FloatingDoodle src="/assets_new/8.svg"        size={44}  bottom="8%"  right="3%"  rotate={-10} opacity={0.08} delay={2.2} reverse />
+      <FloatingDoodle src="/assets_new/10.svg"       size={55}  top="72%"  right="1%"   rotate={25}  opacity={0.06} delay={1.0} />
+
       <div className="w-full max-w-[430px] md:max-w-screen-2xl mx-auto md:px-20">
 
         {/* ── Progresso geral ─────────────────────────────────────── */}
         <motion.div {...fadeUp(0.12)} className="px-4 mb-10">
-          <div className="rounded-2xl p-5" style={{ backgroundColor: "#BAF6F0", border: "1.5px solid #2DCCD3" }}>
-            <div className="flex items-center justify-between mb-1">
-              <p className="font-display font-black text-sm" style={{ color: "#033624" }}>Trilha de Aprendizado</p>
-              <span className="font-body text-xs font-bold tabular-nums" style={{ color: "#033624", opacity: 0.7 }}>
-                {totalDone}/{totalVideos} vídeos
-              </span>
+          <div
+            className="rounded-3xl overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #033624 0%, #065c3d 100%)",
+              boxShadow: "0 24px 64px rgba(3,54,36,0.20), 0 0 0 1px rgba(45,204,211,0.12)",
+            }}
+          >
+            {/* Cabeçalho: título + anel de progresso */}
+            <div className="flex items-start justify-between px-6 pt-6 pb-3">
+              <div className="flex flex-col gap-1.5">
+                <span
+                  className="font-body text-[10px] font-semibold uppercase tracking-[0.18em]"
+                  style={{ color: "#2DCCD3" }}
+                >
+                  Trilha de Aprendizado
+                </span>
+                <p className="font-display font-black leading-none" style={{ fontSize: "clamp(1.9rem,7vw,2.6rem)", color: "#BAF6F0" }}>
+                  {totalDone}
+                  <span className="font-body font-normal text-sm ml-2" style={{ color: "rgba(186,246,240,0.45)" }}>
+                    /{totalVideos} vídeos
+                  </span>
+                </p>
+              </div>
+
+              {/* Anel SVG */}
+              <div className="relative shrink-0 w-[60px] h-[60px] mt-1">
+                <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90">
+                  <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(186,246,240,0.1)" strokeWidth="5" />
+                  <motion.circle
+                    cx="32" cy="32" r="26" fill="none"
+                    stroke="#2DCCD3" strokeWidth="5" strokeLinecap="round"
+                    strokeDasharray={`${2 * Math.PI * 26}`}
+                    animate={{ strokeDashoffset: 2 * Math.PI * 26 * (1 - overallPct / 100) }}
+                    initial={{ strokeDashoffset: 2 * Math.PI * 26 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="font-display font-black text-base leading-none tabular-nums" style={{ color: "#BAF6F0" }}>
+                    {Math.round(overallPct)}
+                  </span>
+                  <span className="font-body text-[8px] font-medium" style={{ color: "rgba(186,246,240,0.45)" }}>%</span>
+                </div>
+              </div>
             </div>
-            <div className="h-2.5 rounded-full mb-4 overflow-hidden" style={{ backgroundColor: "rgba(3,54,36,0.12)" }}>
-              <motion.div
-                className="h-full rounded-full"
-                style={{ backgroundColor: "#033624" }}
-                animate={{ width: `${overallPct}%` }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              />
+
+            {/* Barra geral */}
+            <div className="px-6 pb-5">
+              <div className="h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: "rgba(186,246,240,0.1)" }}>
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{ background: "linear-gradient(90deg, #2DCCD3, #FBEB35)" }}
+                  animate={{ width: `${overallPct}%` }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                />
+              </div>
             </div>
-            <div className="flex items-start gap-2">
+
+            {/* Steps */}
+            <div className="flex items-stretch gap-0.5 px-3 pb-5">
               {TAB_CONFIG.map((tc, i) => {
                 const prog = getProgress(tc.name);
                 const isComplete = prog.done > 0 && prog.done === prog.total;
                 return (
-                  <a key={tc.name} href={`#tab-${i}`} className="flex-1 flex flex-col items-center gap-1.5 group">
+                  <a
+                    key={tc.name}
+                    href={`#tab-${i}`}
+                    className="flex-1 flex flex-col items-center gap-2 py-3 px-1 rounded-2xl group transition-all duration-300 hover:bg-white/5"
+                  >
                     <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all duration-300 group-hover:scale-110 shadow-sm"
-                      style={{ backgroundColor: isComplete ? "#033624" : tc.color, color: isComplete ? "#BAF6F0" : tc.textColor }}
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black transition-all duration-300 group-hover:scale-110"
+                      style={{
+                        backgroundColor: isComplete ? tc.color : "rgba(186,246,240,0.07)",
+                        color: isComplete ? tc.textColor : tc.color,
+                        border: `1.5px solid ${isComplete ? tc.color : "rgba(186,246,240,0.18)"}`,
+                        boxShadow: isComplete ? `0 0 18px ${tc.color}50` : "none",
+                      }}
                     >
                       {isComplete ? "✓" : i + 1}
                     </div>
-                    <p className="font-body text-[9px] text-center leading-tight hidden md:block" style={{ color: "#033624", opacity: 0.65 }}>
+                    <p className="font-body text-[9px] font-medium text-center leading-tight" style={{ color: "rgba(186,246,240,0.5)" }}>
                       {tc.shortName}
                     </p>
-                    {prog.total > 0 && (
-                      <div className="w-full h-1 rounded-full hidden md:block" style={{ backgroundColor: "rgba(3,54,36,0.12)" }}>
-                        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${prog.pct}%`, backgroundColor: "#033624" }} />
-                      </div>
-                    )}
+                    <div className="w-full h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: "rgba(186,246,240,0.08)" }}>
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: tc.color }}
+                        animate={{ width: `${prog.pct}%` }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
                   </a>
                 );
               })}
@@ -384,7 +463,7 @@ export function SliderSection() {
                   <button
                     onClick={() => swiperInstances[tc.name]?.slidePrev()}
                     aria-label="Card anterior"
-                    className="absolute left-0 md:-left-12 top-[calc(50%-2.5rem)] md:top-[calc(50%-1.5rem)] -translate-y-1/2 z-30 w-9 md:w-14 h-9 md:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all active:scale-90 hover:scale-110 border border-white/10"
+                    className="absolute left-0 md:-left-12 top-[calc(50%-2.5rem)] md:top-[calc(50%-1.5rem)] -translate-y-1/2 z-30 w-9 md:w-14 h-9 md:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all active:scale-90 hover:scale-110 border border-white/10 cursor-pointer"
                     style={{ backgroundColor: "rgba(3,54,36,0.98)", color: "#BAF6F0" }}
                   >
                     <ChevronLeft size={24} />
@@ -393,7 +472,7 @@ export function SliderSection() {
                   <button
                     onClick={() => swiperInstances[tc.name]?.slideNext()}
                     aria-label="Próximo card"
-                    className="absolute right-0 md:-right-12 top-[calc(50%-2.5rem)] md:top-[calc(50%-1.5rem)] -translate-y-1/2 z-30 w-9 md:w-14 h-9 md:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all active:scale-90 hover:scale-110 border border-white/10"
+                    className="absolute right-0 md:-right-12 top-[calc(50%-2.5rem)] md:top-[calc(50%-1.5rem)] -translate-y-1/2 z-30 w-9 md:w-14 h-9 md:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all active:scale-90 hover:scale-110 border border-white/10 cursor-pointer"
                     style={{ backgroundColor: "rgba(3,54,36,0.98)", color: "#BAF6F0" }}
                   >
                     <ChevronRightNav size={24} />
@@ -415,11 +494,11 @@ export function SliderSection() {
                       return (
                         <SwiperSlide key={`${tc.name}-${vidIdx}`} className="h-auto">
                           <div
-                            className={`flex flex-col h-full rounded-2xl p-6 transition-all duration-500 group min-h-[580px] md:bg-transparent md:p-0 md:min-h-0 ${slide.dark ? "bg-black text-white" : "bg-[#f4f5f5] text-black"}`}
+                            className={`flex flex-col rounded-2xl p-6 transition-all duration-500 group md:bg-transparent md:p-0 ${slide.dark ? "bg-black text-white" : "bg-[#f4f5f5] text-black"}`}
                             onPointerDown={() => pauseAutoplay(tc.name)}
                           >
                             {/* Número do vídeo + tag */}
-                            <div className="flex items-center gap-2 mb-4 md:mb-3">
+                            <div className="flex items-center gap-2 mb-3">
                               <div
                                 className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0"
                                 style={{ backgroundColor: tc.color, color: tc.textColor }}
@@ -431,8 +510,18 @@ export function SliderSection() {
                               </h4>
                             </div>
 
+                            {/* Título */}
+                            <h3 className="font-bold text-xl md:text-lg md:font-black leading-tight mb-2 md:text-[#033624]">
+                              {slide.title}
+                            </h3>
+
+                            {/* Descrição — acima do vídeo */}
+                            <p className={`text-sm leading-snug mb-4 md:text-[#033624]/70 md:leading-relaxed ${slide.dark ? "text-gray-300" : "text-gray-700"}`}>
+                              {slide.description}
+                            </p>
+
                             {/* Vídeo */}
-                            <div className="relative w-full aspect-[9/16] mb-6 md:mb-5 rounded-xl md:rounded-[24px] overflow-hidden shadow-2xl md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:group-hover:-translate-y-2 transition-all duration-500 bg-gray-900">
+                            <div className="relative w-full aspect-[9/16] mb-5 rounded-xl md:rounded-[24px] overflow-hidden shadow-2xl md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:group-hover:-translate-y-2 transition-all duration-500 bg-gray-900">
                               {slide.tiktok ? (
                                 <TikTokEmbed src={slide.video} />
                               ) : (
@@ -445,37 +534,35 @@ export function SliderSection() {
                               )}
                             </div>
 
-                            <h3 className="font-bold text-xl md:text-lg md:font-black leading-tight mb-3 md:mb-2 md:text-[#033624]">
-                              {slide.title}
-                            </h3>
-                            <p className={`text-sm leading-snug mb-5 md:mb-4 md:text-[#033624]/70 md:leading-relaxed ${slide.dark ? "text-gray-300" : "text-gray-700"}`}>
-                              {slide.description}
-                            </p>
-
                             {/* Rodapé */}
-                            <div className="mt-auto flex items-center gap-3">
+                            <div className="flex items-center justify-between gap-3 pt-4">
                               <a
                                 href={slide.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1 hover:opacity-70 transition-all md:group-hover:translate-x-1"
+                                className="flex items-center gap-2 px-5 py-3 rounded-full font-display font-black text-sm text-white cursor-pointer"
+                                style={{ backgroundColor: "#F1204A", boxShadow: "0 4px 14px rgba(241,32,74,0.35)" }}
                                 onClick={() => pauseAutoplay(tc.name)}
                               >
-                                <span className={`font-bold text-sm leading-none md:text-[#033624] md:border-b-2 md:border-[#033624]/10 md:pb-1 md:group-hover:border-[#033624] ${slide.dark ? "text-white" : "text-black"}`}>
-                                  Assistir agora
-                                </span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={`mt-[1px] md:text-[#033624] ${slide.dark ? "text-white" : "text-black"}`}>
-                                  <path d="m9 18 6-6-6-6" />
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M5 3l14 9-14 9V3z" />
                                 </svg>
+                                Assistir agora
                               </a>
 
                               <button
                                 onClick={(e) => { e.stopPropagation(); toggleWatched(tc.name, vidIdx); }}
-                                className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black transition-all duration-200 active:scale-95 shrink-0"
+                                className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-black transition-all duration-200 active:scale-95 shrink-0 cursor-pointer border ${
+                                  isWatched
+                                    ? ""
+                                    : slide.dark
+                                      ? "border-white/40 text-white hover:bg-white/10 md:border-[#033624]/30 md:text-[#033624] md:hover:bg-[#033624]/5"
+                                      : "border-[#033624]/25 text-[#033624] hover:bg-[#033624]/5"
+                                }`}
                                 style={
                                   isWatched
-                                    ? { backgroundColor: "#033624", color: "#BAF6F0" }
-                                    : { backgroundColor: slide.dark ? "rgba(255,255,255,0.12)" : "rgba(3,54,36,0.08)", color: slide.dark ? "#fff" : "#033624" }
+                                    ? { backgroundColor: "#033624", color: "#BAF6F0", borderColor: "#033624" }
+                                    : {}
                                 }
                               >
                                 {isWatched ? "✓ Assistido" : "Marcar"}
@@ -497,6 +584,9 @@ export function SliderSection() {
         __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Permite overflow vertical nos slides sem quebrar o slider horizontal */
+        .mySwiper.swiper { overflow-x: clip !important; overflow-y: visible !important; }
+        .mySwiper .swiper-wrapper { overflow: visible; }
       `}} />
     </section>
   );

@@ -203,7 +203,7 @@ export function CtaFinalSection() {
               {/* ── Accordion trigger ── */}
               <button
                 onClick={() => setAccordionOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-6 py-5 transition-all duration-300 hover:bg-gray-50"
+                className="w-full flex items-center justify-between px-6 py-5 transition-all duration-300 hover:bg-gray-50 cursor-pointer"
                 style={{ backgroundColor: accordionOpen ? "rgba(37,211,102,0.04)" : "rgba(255,255,255,1)" }}
               >
                 <div className="flex items-center gap-3">
@@ -233,7 +233,7 @@ export function CtaFinalSection() {
                     href={g.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 lg:gap-4 px-6 py-4 transition-colors duration-200 border-t group/link"
+                    className="flex items-center gap-3 lg:gap-4 px-6 py-4 transition-colors duration-200 border-t group/link cursor-pointer"
                     style={{
                       borderColor: "rgba(37,211,102,0.08)",
                       backgroundColor: "transparent",

@@ -143,7 +143,7 @@ const FASES: FaseData[] = [
         items: [
           "Garanta Amostras grátis em seus top 3 produtos",
           "Garanta Amostra reembolsável em 3 produtos",
-          "Faça 1 lives (pelo menos 30 min)",
+          "Faça 1 live (pelo menos 30 min)",
           "Poste 3 vídeos com link do produto",
         ],
       },
@@ -161,8 +161,8 @@ const FASES: FaseData[] = [
         ],
       },
     ],
-    reward: "Até R$ 2.400 em cupons de plataforma",
-    rewardSub: "Sessões de suporte · 0% de comissão por 90 dias",
+    reward: "Até R$ 2.400 em cupons de desconto",
+    rewardSub: "Sessões de suporte · 60 dias de comissão 0%",
     rewardIcon: Trophy,
   },
   {
@@ -184,7 +184,7 @@ const FASES: FaseData[] = [
         icon: UserCheck,
         items: [
           "Coloque TODOS os produtos em Colaboração aberta (comissão > 10%)",
-          "Envie no mínimo 30 amostras grátis do mesmo produto para criadores",
+          "Envie no mínimo 30 amostras grátis de um mesmo produto para criadores diversos",
         ],
         materials: [
           { title: "Webinar 2 - Trilha Aceleração", url: "https://bytedance.sg.larkoffice.com/minutes/obsgvo577q35g62w4z28yv35", type: "webinar" },
@@ -359,7 +359,7 @@ function PhaseTab({ fase, index, isActive, onClick }: {
     <button
       onClick={onClick}
       aria-pressed={isActive}
-      className="relative flex flex-col gap-2 p-3.5 rounded-2xl text-left transition-all duration-300 overflow-hidden"
+      className="relative flex flex-col gap-2 p-3.5 rounded-2xl text-left transition-all duration-300 overflow-hidden cursor-pointer"
       style={isActive
         ? { backgroundColor: fase.color, boxShadow: `0 6px 20px ${alpha(fase.color, 0.45)}` }
         : { backgroundColor: DS.white, border: `1.5px solid rgba(3,54,36,0.08)` }}
@@ -528,13 +528,13 @@ function MissionGroupCard({ group, fase, step, onImageClick }: {
                 <div className="grid grid-cols-2 gap-3">
                   {group.materials!.filter(m => m.type === "webinar").map((mat, mi) => (
                     <a key={mi} href={mat.url!} target="_blank" rel="noopener noreferrer"
-                      className="group/thumb flex flex-col gap-2.5 p-2 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:bg-white hover:-translate-y-1 active:scale-[0.98]"
+                      className="group/thumb flex flex-col gap-2.5 p-2 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:bg-white hover:-translate-y-1 active:scale-[0.98] cursor-pointer"
                       style={{ backgroundColor: alpha(fase.color, 0.05), borderColor: alpha(fase.color, 0.15) }}>
-                      <div className="w-full aspect-video rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden shadow-sm"
-                        style={{ backgroundColor: fase.color }}>
-                        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
-                        <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-transform duration-300 group-hover/thumb:scale-110 shadow-lg">
-                          <Play size={16} fill={fase.onColor} strokeWidth={0} className="ml-0.5" />
+                      <div className="w-full aspect-video rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden shadow-sm">
+                        <img src="/assets/fases/webinar.jpeg" alt="Capa Webinar" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-black/20 opacity-60 group-hover/thumb:opacity-40 transition-opacity" />
+                        <div className="relative w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-transform duration-300 group-hover/thumb:scale-110 shadow-lg">
+                          <Play size={16} fill="white" strokeWidth={0} className="ml-0.5" />
                         </div>
                         {/* Play progress bar simulation */}
                         <div className="absolute bottom-0 left-0 h-1 bg-white/20 w-full" />
@@ -561,11 +561,14 @@ function MissionGroupCard({ group, fase, step, onImageClick }: {
                 <div className="grid grid-cols-2 gap-3">
                   {group.materials!.filter(m => m.type === "playbook").map((mat, mi) => (
                     <a key={mi} href={mat.url!} target="_blank" rel="noopener noreferrer"
-                      className="group/thumb flex flex-col gap-2.5 p-2 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:bg-white hover:-translate-y-1 active:scale-[0.98]"
+                      className="group/thumb flex flex-col gap-2.5 p-2 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:bg-white hover:-translate-y-1 active:scale-[0.98] cursor-pointer"
                       style={{ backgroundColor: alpha(DS.dawn, 0.25), borderColor: alpha(DS.dawn, 0.4) }}>
-                      <div className="w-full aspect-video rounded-xl flex items-center justify-center"
-                        style={{ backgroundColor: DS.dawn }}>
-                        <Tag size={18} className="text-[#4A0505] transition-transform duration-300 group-hover/thumb:scale-110" />
+                      <div className="w-full aspect-video rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <img src="/assets/fases/playbook.jpeg" alt="Capa Playbook" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-black/20 opacity-60 group-hover/thumb:opacity-40 transition-opacity" />
+                        <div className="relative">
+                          <Tag size={18} className="text-white drop-shadow transition-transform duration-300 group-hover/thumb:scale-110" />
+                        </div>
                       </div>
                       <span className="font-body text-[0.68rem] font-bold leading-tight px-1 pb-1 line-clamp-2" style={{ color: "#4A0505" }}>
                         {mat.title}
@@ -734,7 +737,7 @@ export function FasesSection() {
             <div className="flex items-center gap-1.5">
               {activeFase.missionGroups.map((_, i) => (
                 <button key={i} onClick={() => jumpTo(i)}
-                  className="rounded-full transition-all duration-300"
+                  className="rounded-full transition-all duration-300 cursor-pointer"
                   style={{
                     height: "6px",
                     width: i === groupStep ? "1.75rem" : "6px",
@@ -769,7 +772,7 @@ export function FasesSection() {
               onClick={goPrev}
               disabled={groupStep === 0 && activeIndex === 0 && !showReward}
               whileTap={{ scale: 0.92 }}
-              className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
+              className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 cursor-pointer"
               style={{
                 backgroundColor: DS.white,
                 border: "1.5px solid rgba(3,54,36,0.1)",
@@ -785,7 +788,7 @@ export function FasesSection() {
               onClick={(e) => goNext(e)}
               whileTap={{ scale: 0.97 }}
               whileHover={{ scale: 1.02 }}
-              className="flex-1 h-11 rounded-2xl font-display font-black text-sm flex items-center justify-center gap-2 transition-shadow duration-200"
+              className="flex-1 h-11 rounded-2xl font-display font-black text-sm flex items-center justify-center gap-2 transition-shadow duration-200 cursor-pointer"
               style={{
                 backgroundColor: activeFase.color,
                 color: activeFase.onColor,
@@ -867,7 +870,7 @@ export function FasesSection() {
         <div className="w-full max-w-[430px] mx-auto px-6 mb-7">
           <p className="font-body text-xs uppercase tracking-widest mb-1" style={{ color: DS.glint }}>A Trilha</p>
           <h2 className="font-display font-black leading-tight" style={{ fontSize: "clamp(1.8rem, 7vw, 2.4rem)", color: DS.thrive }}>
-            tarefas por{" "}
+            Tarefas por{" "}
             <HighlightedText highlightColor={DS.blaze} from="bottom" inView delay={0.3}>Fase</HighlightedText>
           </h2>
           <p className="font-body text-sm mt-1.5" style={{ color: DS.ember, opacity: 0.7 }}>
@@ -1056,7 +1059,7 @@ export function FasesSection() {
                   <div className="flex gap-2">
                     {activeFase.missionGroups.map((_, i) => (
                       <button key={i} onClick={() => jumpTo(i)}
-                        className="rounded-full transition-all duration-300 h-2"
+                        className="rounded-full transition-all duration-300 h-2 cursor-pointer"
                         style={{
                           width: i === groupStep ? "2.5rem" : "1rem",
                           backgroundColor: i <= groupStep ? activeFase.color : alpha(DS.thrive, 0.08),
@@ -1109,7 +1112,7 @@ export function FasesSection() {
                   onClick={(e) => goNext(e)}
                   whileTap={{ scale: 0.98 }}
                   whileHover={{ scale: 1.02 }}
-                  className="flex-1 h-14 rounded-[1.25rem] font-display font-black text-[0.95rem] flex items-center justify-center gap-2.5 transition-all duration-300 group relative overflow-hidden"
+                  className="flex-1 h-14 rounded-[1.25rem] font-display font-black text-[0.95rem] flex items-center justify-center gap-2.5 transition-all duration-300 group relative overflow-hidden cursor-pointer"
                   style={{
                     backgroundColor: activeFase.color,
                     color: activeFase.onColor,
@@ -1125,7 +1128,7 @@ export function FasesSection() {
                   ) : isLastGroup ? (
                     <><activeFase.rewardIcon size={20} className="relative z-10 group-hover:scale-110 transition-transform" strokeWidth={2.5} /><span className="relative z-10">Ver Recompensa da Fase</span></>
                   ) : (
-                    <><span className="relative z-10">Completar tarefa</span><ChevronRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} /></>
+                    <><span className="relative z-10">próximo passo</span><ChevronRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} /></>
                   )}
                 </motion.button>
               </div>
@@ -1191,7 +1194,7 @@ export function FasesSection() {
                         onClick={goNext}
                         whileHover={{ scale: 1.04, boxShadow: "0 15px 30px rgba(241,32,74,0.4)" }}
                         whileTap={{ scale: 0.96 }}
-                        className="h-14 px-10 rounded-full font-display font-black text-lg flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(241,32,74,0.3)] transition-all"
+                        className="h-14 px-10 rounded-full font-display font-black text-lg flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(241,32,74,0.3)] transition-all cursor-pointer"
                         style={{ backgroundColor: "#F1204A", color: "white" }}
                       >
                         {activeIndex < FASES.length - 1 ? (
@@ -1233,7 +1236,7 @@ export function FasesSection() {
               />
               <button
                 onClick={() => setZoomedImage(null)}
-                className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors"
+                className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer"
               >
                 <X size={24} />
               </button>
