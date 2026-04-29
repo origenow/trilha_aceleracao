@@ -17,7 +17,8 @@ export type Evento = {
   tagPill?: string;
   titulo: string;
   subtitulo?: string;
-  imagem?: unknown;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  imagem?: any;
   urlPdf?: string;
 };
 
