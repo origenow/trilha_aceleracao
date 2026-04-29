@@ -466,6 +466,12 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 @media (max-width: 767px) {
   .sm-scope .staggered-menu-panel, .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; }
 }
+
+/* Desktop: botão maior */
+@media (min-width: 768px) {
+  .sm-toggle-btn { font-size: 1.4rem !important; gap: 0.75rem !important; letter-spacing: 0.1em !important; }
+  .sm-toggle-icon-wrap { width: 26px !important; height: 26px !important; }
+}
         `}</style>
       </div>
 
@@ -490,6 +496,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         >
           <button
             ref={toggleBtnRef}
+            className="sm-toggle-btn"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -538,6 +545,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             {/* Ícone ×/+ */}
             <span
               ref={iconRef}
+              className="sm-toggle-icon-wrap"
               style={{
                 position: "relative",
                 width: 18,
@@ -554,8 +562,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 ref={plusHRef}
                 style={{
                   position: "absolute", left: "50%", top: "50%",
-                  width: "100%", height: 2,
-                  background: "currentColor", borderRadius: 2,
+                  width: "100%", height: 3.5,
+                  background: "currentColor", borderRadius: 3,
                   transform: "translate(-50%, -50%)",
                   willChange: "transform",
                 }}
@@ -564,8 +572,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 ref={plusVRef}
                 style={{
                   position: "absolute", left: "50%", top: "50%",
-                  width: "100%", height: 2,
-                  background: "currentColor", borderRadius: 2,
+                  width: "100%", height: 3.5,
+                  background: "currentColor", borderRadius: 3,
                   transform: "translate(-50%, -50%)",
                   willChange: "transform",
                 }}

@@ -26,7 +26,7 @@ export default function PoloModaPage() {
         items={MENU_ITEMS}
         colors={["#F1204A", "#033624", "#2DCCD3"]}
         accentColor="#F1204A"
-        logoUrl="/assets/3.svg"
+        logoUrl="/tiktok-white.png"
         displaySocials={false}
         displayItemNumbering={false}
         toggleClassName="md:hidden"
