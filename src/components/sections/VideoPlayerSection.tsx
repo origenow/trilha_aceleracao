@@ -108,15 +108,14 @@ export function VideoPlayerSection({ canPlay = false }: { canPlay?: boolean }) {
             <img src="/tiktok-icon.svg" alt="TikTok" className="w-16 h-16" />
           </div>
 
-          {/* Vídeo local - Otimizado com preload auto */}
           <video
             ref={videoRef}
             className="w-full h-full object-cover cursor-pointer"
-            src="/assets/videos/video_mobile.mp4"
+            src="/assets/videos/Video%20Mobile_opt.mp4"
             loop
             muted={isMuted}
             playsInline
-            preload="auto"
+            preload="metadata"
             onClick={togglePlay}
           />
 

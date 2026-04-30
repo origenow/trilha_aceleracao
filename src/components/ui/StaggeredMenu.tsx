@@ -469,8 +469,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
 /* Desktop: botão maior */
 @media (min-width: 768px) {
-  .sm-toggle-btn { font-size: 1.4rem !important; gap: 0.75rem !important; letter-spacing: 0.1em !important; }
-  .sm-toggle-icon-wrap { width: 26px !important; height: 26px !important; }
+  .sm-toggle-btn { font-size: 1.8rem !important; gap: 0.35rem !important; letter-spacing: 0.1em !important; }
+  .sm-toggle-icon-wrap { width: 34px !important; height: 34px !important; }
 }
         `}</style>
       </div>
@@ -500,14 +500,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "0.5rem",
+              gap: "0.3rem",
               background: "transparent",
               border: "none",
               cursor: "pointer",
               color: "inherit",
               fontFamily: "'TikTokSansDisplay', sans-serif",
               fontWeight: 700,
-              fontSize: "1rem",
+              fontSize: "1.3rem",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
               lineHeight: 1,
@@ -524,7 +524,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               ref={textWrapRef}
               style={{
                 position: "relative",
-                marginRight: "0.4em",
+                marginRight: "0",
                 display: "inline-block",
                 height: "1em",
                 overflow: "hidden",
@@ -548,8 +548,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               className="sm-toggle-icon-wrap"
               style={{
                 position: "relative",
-                width: 18,
-                height: 18,
+                width: 24,
+                height: 24,
                 flexShrink: 0,
                 display: "inline-flex",
                 alignItems: "center",
@@ -562,7 +562,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 ref={plusHRef}
                 style={{
                   position: "absolute", left: "50%", top: "50%",
-                  width: "100%", height: 3.5,
+                  width: "100%", height: 4.5,
                   background: "currentColor", borderRadius: 3,
                   transform: "translate(-50%, -50%)",
                   willChange: "transform",
@@ -572,7 +572,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 ref={plusVRef}
                 style={{
                   position: "absolute", left: "50%", top: "50%",
-                  width: "100%", height: 3.5,
+                  width: "100%", height: 4.5,
                   background: "currentColor", borderRadius: 3,
                   transform: "translate(-50%, -50%)",
                   willChange: "transform",

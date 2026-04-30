@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -43,7 +43,7 @@ const TAB_CONFIG = [
   { name: "Operação para iniciantes",          shortName: "Operação",   color: "#FBEB35", textColor: "#033624" },
   { name: "Benefícios para novos vendedores",  shortName: "Benefícios", color: "#EDBBE8", textColor: "#4A0505" },
   { name: "Criadores de conteúdo/Afiliados",   shortName: "Criadores",  color: "#F1204A", textColor: "#ffffff" },
-  { name: "Lives",                             shortName: "Lives",      color: "#033624", textColor: "#BAF6F0" },
+  { name: "Lives",                             shortName: "Lives",      color: "#EDD4B2", textColor: "#033624" },
 ];
 
 const tabData: Record<string, SlideData[]> = {
@@ -267,9 +267,44 @@ const tabData: Record<string, SlideData[]> = {
   ],
 };
 
+const LS_KEY = "ttk_watched_v1";
+
+function loadWatched(): Record<string, Set<number>> {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return {};
+    const parsed: Record<string, number[]> = JSON.parse(raw);
+    return Object.fromEntries(Object.entries(parsed).map(([k, v]) => [k, new Set(v)]));
+  } catch {
+    return {};
+  }
+}
+
+function saveWatched(watched: Record<string, Set<number>>) {
+  try {
+    const serializable = Object.fromEntries(
+      Object.entries(watched).map(([k, v]) => [k, [...v]])
+    );
+    localStorage.setItem(LS_KEY, JSON.stringify(serializable));
+  } catch {
+    // localStorage indisponível (modo privado restrito)
+  }
+}
+
 export function SliderSection() {
   const [swiperInstances, setSwiperInstances] = useState<Record<string, any>>({});
   const [watched, setWatched] = useState<Record<string, Set<number>>>({});
+
+  // Carrega do localStorage uma vez, após montar (client-side only)
+  useEffect(() => {
+    setWatched(loadWatched());
+  }, []);
+
+  // Persiste sempre que watched muda
+  useEffect(() => {
+    if (Object.keys(watched).length === 0) return;
+    saveWatched(watched);
+  }, [watched]);
 
   const setSwiperForTab = (tabName: string, swiper: any) => {
     setSwiperInstances(prev => ({ ...prev, [tabName]: swiper }));
@@ -393,7 +428,7 @@ export function SliderSection() {
                     >
                       {isComplete ? "✓" : i + 1}
                     </div>
-                    <p className="font-body text-[9px] font-medium text-center leading-tight" style={{ color: "rgba(186,246,240,0.5)" }}>
+                    <p className="font-body text-[9px] font-bold text-center leading-tight" style={{ color: "rgba(186,246,240,0.5)" }}>
                       {tc.shortName}
                     </p>
                     <div className="w-full h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: "rgba(186,246,240,0.08)" }}>

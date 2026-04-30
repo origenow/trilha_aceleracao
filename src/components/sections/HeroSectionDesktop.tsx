@@ -413,10 +413,11 @@ export function HeroSectionDesktop() {
               <video
                 ref={videoRef}
                 className="object-cover"
-                src="/assets/videos/videoBruna.mp4"
+                src="/assets/videos/Videobruna_opt.mp4"
                 loop
                 muted={isMuted}
                 playsInline
+                preload="metadata"
                 style={{ width: 138, aspectRatio: "16/9" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
