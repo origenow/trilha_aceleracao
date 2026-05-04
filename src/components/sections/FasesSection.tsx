@@ -911,7 +911,7 @@ export function FasesSection() {
             A Trilha
           </p>
           <h2 className="font-display font-black leading-tight mb-3" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: DS.thrive }}>
-            tarefas por{" "}
+            Tarefas por{" "}
             <HighlightedText highlightColor={DS.blaze} from="bottom" inView delay={0.3}>Fase</HighlightedText>
           </h2>
           <p className="font-body text-base max-w-2xl mx-auto font-medium" style={{ color: DS.ember, opacity: 0.8 }}>
