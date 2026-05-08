@@ -141,8 +141,8 @@ const FASES: FaseData[] = [
         title: "Começar a ter conteúdos",
         icon: Video,
         items: [
-          "Garanta Amostras grátis em seus top 3 produtos",
-          "Garanta Amostra reembolsável em 3 produtos",
+          "Garanta amostras grátis em seus top 3 produtos",
+          "Garanta amostra reembolsável em 3 produtos",
           "Faça 1 live (pelo menos 30 min)",
           "Poste 3 vídeos com link do produto",
         ],
@@ -151,8 +151,8 @@ const FASES: FaseData[] = [
         title: "Como ganhar benefícios?",
         icon: Gift,
         items: [
-          "Siga as Oportunidades de crescimento no painel [Figura Abaixo 1]",
-          "Siga as Tarefas de Lives no Live Manager [Figura Abaixo 2]",
+          "Siga as oportunidades de crescimento no painel [Figura Abaixo 1]",
+          "Siga as tarefas de Lives no Live Manager [Figura Abaixo 2]",
         ],
         note: { text: "Acessar Central do Vendedor", href: "https://seller-br.tiktok.com/challenges/growth", external: true },
         images: [
@@ -162,7 +162,7 @@ const FASES: FaseData[] = [
       },
     ],
     reward: "Até R$ 2.400 em cupons de desconto",
-    rewardSub: "Sessões de suporte · 60 dias de comissão 0%",
+    rewardSub: "Sessões de suporte · 0% de comissão por 90 dias",
     rewardIcon: Trophy,
   },
   {
@@ -183,7 +183,7 @@ const FASES: FaseData[] = [
         title: "Ativar afiliados (ESSENCIAL)",
         icon: UserCheck,
         items: [
-          "Coloque TODOS os produtos em Colaboração aberta (comissão > 10%)",
+          "Coloque TODOS os produtos em colaboração aberta (comissão > 10%)",
           "Envie no mínimo 30 amostras grátis de um mesmo produto para criadores diversos",
         ],
         materials: [
@@ -209,7 +209,7 @@ const FASES: FaseData[] = [
         title: "Entrar nas campanhas",
         icon: Megaphone,
         items: [
-          "Acompanhe em Marketing > Campanhas todas oportunidades de descontos financiados pelo TikTok",
+          "Acompanhe em Marketing > Campanhas todas as oportunidades de descontos financiados pelo TikTok",
         ],
       },
     ],
@@ -239,7 +239,7 @@ const FASES: FaseData[] = [
           "Reforçar relacionamento com top criadores (mandar mais produtos)",
         ],
         materials: [
-          { title: "Assitir o webinar 3 sobre TikTok Shop", url: "https://bytedance.sg.larkoffice.com/minutes/obsgv6t9hu43976116r93ot3", type: "webinar" },
+          { title: "Assistir o webinar 3 sobre TikTok Shop", url: "https://bytedance.sg.larkoffice.com/minutes/obsgv6t9hu43976116r93ot3", type: "webinar" },
         ],
       },
       {
@@ -1049,7 +1049,7 @@ export function FasesSection() {
                 <div className="flex items-center justify-between mb-5 pb-4 border-b border-gray-100">
                   <div>
                     <h4 className="font-display font-black text-[1.4rem] tracking-tight text-[#033624]">
-                      tarefa Atual
+                      Tarefa Atual
                     </h4>
                     <p className="font-body text-xs font-bold uppercase tracking-widest mt-1.5" style={{ color: alpha(DS.thrive, 0.4) }}>
                       Passo {groupStep + 1} de {totalSteps}
@@ -1128,7 +1128,7 @@ export function FasesSection() {
                   ) : isLastGroup ? (
                     <><activeFase.rewardIcon size={20} className="relative z-10 group-hover:scale-110 transition-transform" strokeWidth={2.5} /><span className="relative z-10">Ver Recompensa da Fase</span></>
                   ) : (
-                    <><span className="relative z-10">próximo passo</span><ChevronRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} /></>
+                    <><span className="relative z-10">Próximo passo</span><ChevronRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} /></>
                   )}
                 </motion.button>
               </div>

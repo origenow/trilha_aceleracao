@@ -489,7 +489,7 @@ export function PoloModaSection() {
           style={{ color: "#4A0505", opacity: 0.68, maxWidth: "480px" }}
           {...heroLine(0.46)}
         >
-          Se sua loja está cadastrada com o CEP de um Polo de moda,
+          Se sua loja está cadastrada com o CEP de um Polo de Moda,
           você já faz parte automaticamente.
         </motion.p>
 

@@ -428,7 +428,7 @@ export function HeroSectionDesktop() {
                 style={{ opacity: smallInfoOpacity }}
               >
                 <p className="text-white text-[9px] font-display font-black leading-tight">@bruna.moda</p>
-                <p className="text-white/60 text-[8px] font-body">Trilha Aceleração</p>
+                <p className="text-white/60 text-[8px] font-body">Trilha de Aceleração</p>
               </motion.div>
 
             </motion.div>
@@ -534,7 +534,7 @@ export function HeroSectionDesktop() {
               COMPLETE<br />TAREFAS
             </h3>
             <p className="text-[11px] md:text-[0.8rem] text-[#033624]/60 font-bold uppercase tracking-widest mb-auto font-body">
-              3 Fases e 60 dias
+              3 Fases em 60 dias
             </p>
 
             {/* Pill Graphic */}

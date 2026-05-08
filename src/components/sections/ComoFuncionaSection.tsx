@@ -24,7 +24,7 @@ const PASSOS = [
     num: "3",
     icon: Gift,
     title: "Conclua e atualize",
-    desc: "Ao completar a tarefa, recarregue a página para registrar ",
+    desc: "Ao completar a tarefa, recarregue a página para registrar o progresso",
   },
   {
     num: "4",

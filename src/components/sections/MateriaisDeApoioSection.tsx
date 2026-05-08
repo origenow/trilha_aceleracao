@@ -93,8 +93,8 @@ const ITEMS: MaterialItem[] = [
   {
     id: "semi-joias",
     icon: Gem,
-    label: "Categoria de Semi-Jóias",
-    description: "Requisitos e boas práticas para vender jóias e semi-jóias",
+    label: "Categoria de Semijoias",
+    description: "Requisitos e boas práticas para vender joias e semijoias",
     href: "https://bytedance.sg.larkoffice.com/docx/N7KiddZJzopzFIxu6wVlxFMJgxb",
     accent: "#2DCCD3",
     accentText: "#111111",
@@ -497,7 +497,7 @@ function OnboardingModal({ onClose }: { onClose: () => void }) {
                         <span className="text-sm flex-shrink-0">💡</span>
                         <div>
                           <p className="font-display font-black text-[13px]" style={{ color: "#033624" }}>
-                            Isenção de comissão por 60 dias
+                            Isenção de comissão por 90 dias
                           </p>
                           <p className="font-body text-[11px] leading-snug mt-0.5" style={{ color: "#033624", opacity: 0.65 }}>
                             Habilite a missão no Seller Center para participar

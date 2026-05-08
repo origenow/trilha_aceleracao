@@ -4,9 +4,8 @@ export function Footer() {
       <div className="w-full max-w-[430px] lg:max-w-screen-xl mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center lg:justify-between gap-6 lg:gap-0">
         
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <img src="/tiktok-icon.svg" alt="TikTok" className="w-8 h-8 lg:w-10 lg:h-10 opacity-80" />
-          <span className="font-display font-black text-sm lg:text-base hidden lg:block" style={{ color: "#033624" }}>TikTok Shop</span>
+        <div className="flex items-center">
+          <img src="/TTSLogoFullBlack.svg" alt="TikTok Shop" className="h-7 lg:h-9 w-auto opacity-80" />
         </div>
 
         {/* Copy */}

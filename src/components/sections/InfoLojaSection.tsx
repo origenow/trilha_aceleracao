@@ -264,10 +264,10 @@ export function InfoLojaSection() {
               <span style={{ fontSize: "1.75rem", lineHeight: 1, marginTop: "1px" }}>💡</span>
               <div className="flex flex-col gap-1">
                 <p className="font-display font-black text-base" style={{ color: "#033624" }}>
-                  Isenção de comissão por 60 dias
+                  Isenção de comissão por 90 dias
                 </p>
                 <p className="font-body text-xs leading-relaxed" style={{ color: "#033624", opacity: 0.75 }}>
-                  Habilite a tarefa no Seller Center para participar e aproveite 0% de comissão nas primeiras semanas.
+                  Habilite a tarefa no Seller Center para participar e aproveite 0% de comissão nos primeiros 90 dias.
                 </p>
               </div>
             </div>
