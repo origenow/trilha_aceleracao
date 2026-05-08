@@ -8,7 +8,11 @@ export const metadata = {
   description:
     "Programa exclusivo para vendedores de Polos de Moda credenciados. Desbloqueie benefícios, cupons e suporte dedicado no TikTok Shop.",
   icons: {
-    icon: "/tiktok-icon.svg",
+    icon: [
+      { url: "/Shoppingbag_icon-03.svg", type: "image/svg+xml" },
+      { url: "/assets/favicon_io/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: { url: "/assets/favicon_io/apple-touch-icon.png", sizes: "180x180" },
   },
 };
 
