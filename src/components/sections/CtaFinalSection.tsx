@@ -50,14 +50,14 @@ const FlowerDoodle = () => (
 
 /* ── Dados grupos WhatsApp ───────────────────────────────────── */
 const GRUPOS = [
-  { regiao: "Birigui",         link: "https://chat.whatsapp.com/Fi4iERd1llnDjeORN0xwK2" },
-  { regiao: "Brás",            link: "https://chat.whatsapp.com/LUOgiqEApUc8mXOeVbPxKO" },
-  { regiao: "Franca",          link: "https://chat.whatsapp.com/I7FD7s2GK7N5Ld5XOTKPEa" },
-  { regiao: "Goiânia",         link: "https://chat.whatsapp.com/H46KVUKVn0jLEmDM9uQDSv" },
-  { regiao: "Mar de Espanha",  link: "https://chat.whatsapp.com/CtfLuI455TZ0sWCekVHb2I" },
-  { regiao: "Nova Friburgo",   link: "https://chat.whatsapp.com/EBYYg34lh2q5mb5gzKKz6J" },
-  { regiao: "Nova Serrana",    link: "https://chat.whatsapp.com/GgWOs3eNI4n9SWdA41Oabg" },
-  { regiao: "Santa Catarina",  link: "https://chat.whatsapp.com/DKDpkAUKmZFLh9TuwHJpq4" },
+  { regiao: "Birigui", link: "https://chat.whatsapp.com/Fi4iERd1llnDjeORN0xwK2" },
+  { regiao: "Brás", link: "https://chat.whatsapp.com/LUOgiqEApUc8mXOeVbPxKO" },
+  { regiao: "Franca", link: "https://chat.whatsapp.com/I7FD7s2GK7N5Ld5XOTKPEA" },
+  { regiao: "Goiânia", link: "https://chat.whatsapp.com/H46KVUKVn0jLEmDM9uQDSv" },
+  { regiao: "Mar de Espanha", link: "https://chat.whatsapp.com/CtfLuI455TZ0sWCekVHb2I" },
+  { regiao: "Nova Friburgo", link: "https://chat.whatsapp.com/EBYYg34lh2q5mb5gzKKz6J" },
+  { regiao: "Nova Serrana", link: "https://chat.whatsapp.com/GgWOs3eNI4n9SWdA41Oabg" },
+  { regiao: "Santa Catarina", link: "https://chat.whatsapp.com/DKDpkAUKmZFLh9TuwHJpq4" },
 ];
 
 /* ── Componente principal ─────────────────────────────────────── */
@@ -89,10 +89,10 @@ export function CtaFinalSection() {
     const height = rect.height;
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
-    
+
     x.set(xPct);
     y.set(yPct);
   };
@@ -125,12 +125,12 @@ export function CtaFinalSection() {
         {/* Centralized WhatsApp Card */}
         <div className="flex justify-center items-center">
           <div className="w-full max-w-[540px] relative group" style={{ perspective: isMobile ? "none" : "1000px" }}>
-            
+
             {/* Fundo glow do Whatsapp no desktop */}
             <div className="hidden lg:block absolute -inset-4 bg-gradient-to-r from-[#25D366]/40 to-[#128C7E]/40 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
 
             {/* ── Bloco WhatsApp ── */}
-            <motion.div 
+            <motion.div
               ref={containerRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -146,130 +146,130 @@ export function CtaFinalSection() {
                 style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.15)" }}
               >
 
-              {/* Header verde WhatsApp */}
-              <div
-                className="relative px-6 py-6 lg:py-8 overflow-hidden"
-                style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)" }}
-              >
-                {/* Círculos decorativos de fundo */}
-                <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10" style={{ backgroundColor: "white" }} />
-                <div className="absolute bottom-4 right-10 w-16 h-16 rounded-full opacity-[0.05]" style={{ backgroundColor: "white" }} />
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full opacity-10" style={{ backgroundColor: "white" }} />
+                {/* Header verde WhatsApp */}
+                <div
+                  className="relative px-6 py-6 lg:py-8 overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)" }}
+                >
+                  {/* Círculos decorativos de fundo */}
+                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10" style={{ backgroundColor: "white" }} />
+                  <div className="absolute bottom-4 right-10 w-16 h-16 rounded-full opacity-[0.05]" style={{ backgroundColor: "white" }} />
+                  <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full opacity-10" style={{ backgroundColor: "white" }} />
 
-                <div className="relative z-10 flex items-center gap-4 lg:gap-5">
-                  {/* Ícone WhatsApp */}
-                  <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-[1.25rem] flex items-center justify-center shrink-0 backdrop-blur-md shadow-inner"
-                    style={{ backgroundColor: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.3)" }}>
-                    <WhatsAppIcon size={32} className="text-white drop-shadow-md" />
+                  <div className="relative z-10 flex items-center gap-4 lg:gap-5">
+                    {/* Ícone WhatsApp */}
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-[1.25rem] flex items-center justify-center shrink-0 backdrop-blur-md shadow-inner"
+                      style={{ backgroundColor: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.3)" }}>
+                      <WhatsAppIcon size={32} className="text-white drop-shadow-md" />
+                    </div>
+
+                    {/* Texto */}
+                    <div className="flex-1 text-left">
+                      <p className="font-display font-black text-white text-[1.1rem] lg:text-[1.3rem] leading-tight drop-shadow-sm">
+                        Comunidade Exclusiva
+                      </p>
+                      <p className="font-body text-white/80 text-xs lg:text-[0.8rem] font-medium mt-1">
+                        Suporte diário · dicas · networking VIP
+                      </p>
+                    </div>
+
+                    {/* Badge regiões */}
+                    <div className="shrink-0 px-3 py-2 rounded-2xl text-center backdrop-blur-md shadow-sm"
+                      style={{ backgroundColor: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.4)" }}>
+                      <p className="font-display font-black text-white text-base lg:text-lg leading-none">8</p>
+                      <p className="font-body text-white/80 text-[0.6rem] lg:text-xs font-bold uppercase tracking-widest mt-1">grupos</p>
+                    </div>
                   </div>
 
-                  {/* Texto */}
-                  <div className="flex-1 text-left">
-                    <p className="font-display font-black text-white text-[1.1rem] lg:text-[1.3rem] leading-tight drop-shadow-sm">
-                      Comunidade Exclusiva
+                  {/* Pill subtítulo */}
+                  <div className="relative z-10 mt-5 flex items-center gap-3">
+                    <div className="flex -space-x-2.5">
+                      {["pro1.jpg", "pro2.jpg", "pro3.jpg", "pro4.jpg"].map((img, i) => (
+                        <div key={i} className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white shadow-sm overflow-hidden bg-[#EDF3F1]">
+                          <img
+                            src={`/assets/images/wpp_card/${img}`}
+                            alt=""
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <p className="font-body text-white/90 text-xs lg:text-sm font-medium">
+                      Vendedores de moda de todo o Brasil
                     </p>
-                    <p className="font-body text-white/80 text-xs lg:text-[0.8rem] font-medium mt-1">
-                      Suporte diário · dicas · networking VIP
-                    </p>
-                  </div>
-
-                  {/* Badge regiões */}
-                  <div className="shrink-0 px-3 py-2 rounded-2xl text-center backdrop-blur-md shadow-sm"
-                    style={{ backgroundColor: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.4)" }}>
-                    <p className="font-display font-black text-white text-base lg:text-lg leading-none">8</p>
-                    <p className="font-body text-white/80 text-[0.6rem] lg:text-xs font-bold uppercase tracking-widest mt-1">grupos</p>
                   </div>
                 </div>
 
-                {/* Pill subtítulo */}
-                <div className="relative z-10 mt-5 flex items-center gap-3">
-                  <div className="flex -space-x-2.5">
-                    {["pro1.jpg", "pro2.jpg", "pro3.jpg", "pro4.jpg"].map((img, i) => (
-                      <div key={i} className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white shadow-sm overflow-hidden bg-[#EDF3F1]">
-                        <img 
-                          src={`/assets/images/wpp_card/${img}`} 
-                          alt="" 
-                          className="w-full h-full object-cover"
-                        />
+                {/* ── Accordion trigger ── */}
+                <button
+                  onClick={() => setAccordionOpen((v) => !v)}
+                  className="w-full flex items-center justify-between px-6 py-5 transition-all duration-300 hover:bg-gray-50 cursor-pointer"
+                  style={{ backgroundColor: accordionOpen ? "rgba(37,211,102,0.04)" : "rgba(255,255,255,1)" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl flex items-center justify-center transition-colors"
+                      style={{ backgroundColor: accordionOpen ? "#25D366" : "rgba(37,211,102,0.15)", color: accordionOpen ? "white" : "#128C7E" }}>
+                      <WhatsAppIcon size={16} />
+                    </div>
+                    <span className="font-display font-black text-sm lg:text-base" style={{ color: "#033624" }}>
+                      Entrar no grupo da sua região
+                    </span>
+                  </div>
+                  <ChevronDown
+                    size={20}
+                    className="transition-transform duration-500"
+                    style={{ transform: accordionOpen ? "rotate(180deg)" : "rotate(0deg)", color: "#128C7E" }}
+                  />
+                </button>
+
+                {/* ── Lista de grupos ── */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${accordionOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}
+                  style={{ backgroundColor: "#FCFDFD" }}
+                >
+                  {GRUPOS.map((g, i) => (
+                    <a
+                      key={i}
+                      href={g.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 lg:gap-4 px-6 py-4 transition-colors duration-200 border-t group/link cursor-pointer"
+                      style={{
+                        borderColor: "rgba(37,211,102,0.08)",
+                        backgroundColor: "transparent",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(37,211,102,0.04)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                    >
+                      {/* Avatar inicial */}
+                      <div className="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 font-display font-black text-[1.1rem] transition-transform duration-300 group-hover/link:scale-110"
+                        style={{ backgroundColor: "rgba(37,211,102,0.12)", color: "#128C7E", border: "1px solid rgba(37,211,102,0.2)" }}>
+                        {g.regiao.charAt(0)}
                       </div>
-                    ))}
+                      <div className="flex-1">
+                        <p className="font-display font-black text-[0.95rem] transition-colors" style={{ color: "#033624" }}>
+                          {g.regiao}
+                        </p>
+                        <p className="font-body text-[0.7rem] font-medium" style={{ color: "rgba(3,54,36,0.5)" }}>
+                          Polo de Moda · TikTok Shop
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-4 py-2 rounded-full font-body text-[0.75rem] font-bold shadow-sm transition-all duration-300 group-hover/link:shadow-md group-hover/link:-translate-y-0.5"
+                        style={{ backgroundColor: "#25D366", color: "white" }}>
+                        <WhatsAppIcon size={12} />
+                        Entrar
+                      </div>
+                    </a>
+                  ))}
+
+                  {/* Footer do accordion */}
+                  <div className="px-6 py-4.5 flex items-center gap-2 bg-gray-50" style={{ borderTop: "1px solid rgba(37,211,102,0.1)" }}>
+                    <div className="w-2 h-2 rounded-full shadow-[0_0_8px_#25D366]" style={{ backgroundColor: "#25D366" }} />
+                    <p className="font-body text-[0.7rem] font-medium" style={{ color: "rgba(3,54,36,0.6)" }}>
+                      Grupos oficiais do programa Trilha de Aceleração
+                    </p>
                   </div>
-                  <p className="font-body text-white/90 text-xs lg:text-sm font-medium">
-                    Vendedores de moda de todo o Brasil
-                  </p>
                 </div>
-              </div>
-
-              {/* ── Accordion trigger ── */}
-              <button
-                onClick={() => setAccordionOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-6 py-5 transition-all duration-300 hover:bg-gray-50 cursor-pointer"
-                style={{ backgroundColor: accordionOpen ? "rgba(37,211,102,0.04)" : "rgba(255,255,255,1)" }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center transition-colors"
-                    style={{ backgroundColor: accordionOpen ? "#25D366" : "rgba(37,211,102,0.15)", color: accordionOpen ? "white" : "#128C7E" }}>
-                    <WhatsAppIcon size={16} />
-                  </div>
-                  <span className="font-display font-black text-sm lg:text-base" style={{ color: "#033624" }}>
-                    Entrar no grupo da sua região
-                  </span>
-                </div>
-                <ChevronDown
-                  size={20}
-                  className="transition-transform duration-500"
-                  style={{ transform: accordionOpen ? "rotate(180deg)" : "rotate(0deg)", color: "#128C7E" }}
-                />
-              </button>
-
-              {/* ── Lista de grupos ── */}
-              <div 
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${accordionOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}
-                style={{ backgroundColor: "#FCFDFD" }}
-              >
-                {GRUPOS.map((g, i) => (
-                  <a
-                    key={i}
-                    href={g.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 lg:gap-4 px-6 py-4 transition-colors duration-200 border-t group/link cursor-pointer"
-                    style={{
-                      borderColor: "rgba(37,211,102,0.08)",
-                      backgroundColor: "transparent",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(37,211,102,0.04)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                  >
-                    {/* Avatar inicial */}
-                    <div className="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 font-display font-black text-[1.1rem] transition-transform duration-300 group-hover/link:scale-110"
-                      style={{ backgroundColor: "rgba(37,211,102,0.12)", color: "#128C7E", border: "1px solid rgba(37,211,102,0.2)" }}>
-                      {g.regiao.charAt(0)}
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-display font-black text-[0.95rem] transition-colors" style={{ color: "#033624" }}>
-                        {g.regiao}
-                      </p>
-                      <p className="font-body text-[0.7rem] font-medium" style={{ color: "rgba(3,54,36,0.5)" }}>
-                        Polo de Moda · TikTok Shop
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1.5 px-4 py-2 rounded-full font-body text-[0.75rem] font-bold shadow-sm transition-all duration-300 group-hover/link:shadow-md group-hover/link:-translate-y-0.5"
-                      style={{ backgroundColor: "#25D366", color: "white" }}>
-                      <WhatsAppIcon size={12} />
-                      Entrar
-                    </div>
-                  </a>
-                ))}
-
-                {/* Footer do accordion */}
-                <div className="px-6 py-4.5 flex items-center gap-2 bg-gray-50" style={{ borderTop: "1px solid rgba(37,211,102,0.1)" }}>
-                  <div className="w-2 h-2 rounded-full shadow-[0_0_8px_#25D366]" style={{ backgroundColor: "#25D366" }} />
-                  <p className="font-body text-[0.7rem] font-medium" style={{ color: "rgba(3,54,36,0.6)" }}>
-                    Grupos oficiais do programa Trilha de Aceleração
-                  </p>
-                </div>
-              </div>
               </div>
             </motion.div>
 
