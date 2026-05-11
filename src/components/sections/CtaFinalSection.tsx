@@ -60,6 +60,7 @@ const GRUPOS = [
   { regiao: "Santa Catarina", link: "https://chat.whatsapp.com/DKDpkAUKmZFLh9TuwHJpq4" },
 ];
 
+
 /* ── Componente principal ─────────────────────────────────────── */
 export function CtaFinalSection() {
   const [accordionOpen, setAccordionOpen] = useState(false);
