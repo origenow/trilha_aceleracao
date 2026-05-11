@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { VideoPlayerSection } from "@/components/sections/VideoPlayerSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FasesSection } from "@/components/sections/FasesSection";
@@ -7,6 +8,12 @@ import { CtaFinalSection } from "@/components/sections/CtaFinalSection";
 import { Footer } from "@/components/sections/Footer";
 import { TikTokIntro } from "@/components/ui/TikTokIntro";
 import { StaggeredMenu } from "@/components/ui/StaggeredMenu";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/#webinars",
+  },
+};
 
 const MOBILE_MENU_ITEMS = [
   { label: "Trilha", ariaLabel: "Trilha de Aceleração", link: "/", color: "#F1204A" },
