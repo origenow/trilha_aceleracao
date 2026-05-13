@@ -75,11 +75,11 @@ export function CtaFinalSection() {
   }, []);
 
   // Abre a sanfona automaticamente quando a página é acessada via âncora
-  // (#grupos ou #whatsapp) — apenas em mobile, conforme solicitado.
+  // (#grupos ou #whatsapp) — tanto em mobile quanto em desktop.
   React.useEffect(() => {
     const openIfTargeted = () => {
       const hash = window.location.hash;
-      if ((hash === "#grupos" || hash === "#whatsapp") && window.innerWidth < 1024) {
+      if (hash === "#grupos" || hash === "#whatsapp") {
         setAccordionOpen(true);
       }
     };
