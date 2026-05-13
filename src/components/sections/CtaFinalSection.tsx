@@ -74,6 +74,20 @@ export function CtaFinalSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Abre a sanfona automaticamente quando a página é acessada via âncora
+  // (#grupos ou #whatsapp) — apenas em mobile, conforme solicitado.
+  React.useEffect(() => {
+    const openIfTargeted = () => {
+      const hash = window.location.hash;
+      if ((hash === "#grupos" || hash === "#whatsapp") && window.innerWidth < 1024) {
+        setAccordionOpen(true);
+      }
+    };
+    openIfTargeted();
+    window.addEventListener("hashchange", openIfTargeted);
+    return () => window.removeEventListener("hashchange", openIfTargeted);
+  }, []);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -109,6 +123,9 @@ export function CtaFinalSection() {
       className="relative py-16 overflow-hidden"
       style={{ background: "linear-gradient(180deg, #BAF6F0 0%, #EDD4B2 100%)" }}
     >
+      {/* Âncora canônica para a Comunidade Exclusiva (#grupos) */}
+      <span id="grupos" aria-hidden="true" className="block" style={{ scrollMarginTop: "80px" }} />
+
       {/* Doodles */}
       <svg className="absolute top-5 right-4 pointer-events-none animate-float" style={{ opacity: 0.55 }}
         width="52" height="52" viewBox="0 0 52 52" fill="none">
