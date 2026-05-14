@@ -1,12 +1,14 @@
 import { client } from "@/sanity/client";
 import { WebinarsSectionClient } from "./WebinarsSectionClient";
 
-const query = `*[_type == "evento"]{
+const query = `*[_type == "evento"] | order(dataEvento asc) {
   _id,
   tipo,
   tagPill,
   titulo,
   subtitulo,
+  dataEvento,
+  local,
   imagem,
   "urlPdf": arquivo.asset->url
 }`;
@@ -17,6 +19,8 @@ export type Evento = {
   tagPill?: string;
   titulo: string;
   subtitulo?: string;
+  dataEvento?: string;
+  local?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   imagem?: any;
   urlPdf?: string;

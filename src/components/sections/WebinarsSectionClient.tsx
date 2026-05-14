@@ -1,10 +1,45 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Download, Video, Users } from "lucide-react";
+import { Download, Video, Users, CalendarDays, MapPin } from "lucide-react";
 import { HighlightedText } from "@/components/ui/highlighted-text";
 import { urlFor } from "@/sanity/client";
 import type { Evento } from "./WebinarsSection";
+
+function formatDataEvento(iso?: string): string {
+  if (!iso) return "A confirmar";
+  const d = new Date(iso);
+  const dia = d.toLocaleDateString("pt-BR", { day: "2-digit", timeZone: "America/Sao_Paulo" });
+  const mes = d.toLocaleDateString("pt-BR", { month: "short", timeZone: "America/Sao_Paulo" }).replace(".", "").toUpperCase();
+  const hora = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
+  return `${dia} ${mes} • ${hora}h`;
+}
+
+function DataBadge({ dataEvento, local, size = "md" }: { dataEvento?: string; local?: string; size?: "sm" | "md" }) {
+  const iconSize = size === "sm" ? 11 : 13;
+  const textClass = size === "sm" ? "text-[0.65rem]" : "text-xs";
+  const isPending = !dataEvento;
+  return (
+    <div className={`flex items-center gap-3 flex-wrap mt-2`}>
+      <span
+        className={`flex items-center gap-1.5 font-body ${textClass} font-semibold`}
+        style={{ color: isPending ? "#4A0505" : "#F1204A", opacity: isPending ? 0.45 : 1 }}
+      >
+        <CalendarDays size={iconSize} />
+        {formatDataEvento(dataEvento)}
+      </span>
+      {local && (
+        <span
+          className={`flex items-center gap-1.5 font-body ${textClass} font-medium`}
+          style={{ color: "#4A0505", opacity: 0.55 }}
+        >
+          <MapPin size={iconSize} />
+          {local}
+        </span>
+      )}
+    </div>
+  );
+}
 
 interface Props {
   webinars: Evento[];
@@ -223,6 +258,7 @@ export function WebinarsSectionClient({ webinars, presenciais }: Props) {
                     {evento.subtitulo && (
                       <p className="font-body text-sm opacity-60 mt-0.5" style={{ color: "#4A0505" }}>{evento.subtitulo}</p>
                     )}
+                    <DataBadge dataEvento={evento.dataEvento} local={evento.local} />
                   </div>
                   {evento.urlPdf && (
                     <div className="flex items-center gap-2 mt-auto pt-3 border-t border-gray-100" style={{ color: "#F1204A" }}>
@@ -303,6 +339,7 @@ export function WebinarsSectionClient({ webinars, presenciais }: Props) {
                     {evento.subtitulo && (
                       <p className="font-body text-[0.65rem] opacity-60 mt-1">{evento.subtitulo}</p>
                     )}
+                    <DataBadge dataEvento={evento.dataEvento} local={evento.local} size="sm" />
                   </div>
                   {evento.urlPdf && (
                     <div className="flex items-center gap-2 text-[#F1204A]">
