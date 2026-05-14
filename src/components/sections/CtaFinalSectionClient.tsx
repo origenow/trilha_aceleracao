@@ -8,6 +8,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 export type GrupoWhatsApp = {
   _id: string;
   regiao: string;
+  subtitulo?: string;
   link: string;
   ordem: number;
 };
@@ -249,7 +250,7 @@ export function CtaFinalSectionClient({ grupos }: Props) {
                           {g.regiao}
                         </p>
                         <p className="font-body text-[0.7rem] font-medium" style={{ color: "rgba(3,54,36,0.5)" }}>
-                          Polo de Moda · TikTok Shop
+                          {g.subtitulo ?? "Polo de Moda · TikTok Shop"}
                         </p>
                       </div>
                       <div className="flex items-center gap-1.5 px-4 py-2 rounded-full font-body text-[0.75rem] font-bold shadow-sm transition-all duration-300 group-hover/link:shadow-md group-hover/link:-translate-y-0.5"

@@ -6,13 +6,8 @@ import { HighlightedText } from "@/components/ui/highlighted-text";
 import { urlFor } from "@/sanity/client";
 import type { Evento } from "./WebinarsSection";
 
-function formatDataEvento(iso?: string): string {
-  if (!iso) return "A confirmar";
-  const d = new Date(iso);
-  const dia = d.toLocaleDateString("pt-BR", { day: "2-digit", timeZone: "America/Sao_Paulo" });
-  const mes = d.toLocaleDateString("pt-BR", { month: "short", timeZone: "America/Sao_Paulo" }).replace(".", "").toUpperCase();
-  const hora = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
-  return `${dia} ${mes} • ${hora}h`;
+function formatDataEvento(texto?: string): string {
+  return texto?.trim() || "A confirmar";
 }
 
 function DataBadge({ dataEvento, local, size = "md" }: { dataEvento?: string; local?: string; size?: "sm" | "md" }) {
