@@ -81,7 +81,7 @@ const BENEFICIOS: Benefit[] = [
 const HERO_STATS = [
   { val: "R$ 9.800", label: "em benefícios totais", accent: "#F1204A" },
   { val: "8", label: "regiões participantes", accent: "#033624" },
-  { val: "0%", label: "comissão por 90 dias", accent: "#2DCCD3" },
+  { val: "0%", label: "comissão por 60 dias", accent: "#2DCCD3" },
 ];
 
 const heroLine = (delay: number) => ({

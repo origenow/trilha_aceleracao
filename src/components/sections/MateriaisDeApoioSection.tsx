@@ -497,7 +497,7 @@ function OnboardingModal({ onClose }: { onClose: () => void }) {
                         <span className="text-sm flex-shrink-0">💡</span>
                         <div>
                           <p className="font-display font-black text-[13px]" style={{ color: "#033624" }}>
-                            Isenção de comissão por 90 dias
+                            Isenção de comissão por 60 dias
                           </p>
                           <p className="font-body text-[11px] leading-snug mt-0.5" style={{ color: "#033624", opacity: 0.65 }}>
                             Habilite a missão no Seller Center para participar

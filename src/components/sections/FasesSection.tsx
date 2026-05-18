@@ -61,7 +61,7 @@ interface Material {
 }
 
 interface MissionItem {
-  text: string;
+  text: React.ReactNode;
   icon?: LucideIcon;
 }
 
@@ -70,7 +70,7 @@ interface MissionGroup {
   icon: LucideIcon;
   items: (string | MissionItem)[];
   materials?: Material[];
-  note?: { text: string; href: string; external?: boolean };
+  note?: { text: string; href: string; external?: boolean; label?: string }[];
   images?: string[];
 }
 
@@ -115,7 +115,7 @@ const FASES: FaseData[] = [
         items: [
           { text: "Entre no grupo de WhatsApp da sua região (dicas + suporte diário)", icon: MessageCircle },
         ],
-        note: { text: "Ver grupos por região", href: "#cta" },
+        note: [{ text: "Ver grupos por região", href: "#cta" }],
       },
       {
         title: "Subir seus produtos",
@@ -154,7 +154,7 @@ const FASES: FaseData[] = [
           "Siga as oportunidades de crescimento no painel [Figura Abaixo 1]",
           "Siga as tarefas de Lives no Live Manager [Figura Abaixo 2]",
         ],
-        note: { text: "Acessar Central do Vendedor", href: "https://seller-br.tiktok.com/challenges/growth", external: true },
+        note: [{ text: "Acessar Central do Vendedor", href: "https://seller-br.tiktok.com/challenges/growth", external: true }],
         images: [
           "/assets/beneficios/beneficio1.png",
           "/assets/beneficios/beneficio2.png",
@@ -162,7 +162,7 @@ const FASES: FaseData[] = [
       },
     ],
     reward: "Até R$ 2.400 em cupons de desconto",
-    rewardSub: "Sessões de suporte · 0% de comissão por 90 dias",
+    rewardSub: "Sessões de suporte · 0% de comissão por 60 dias",
     rewardIcon: Trophy,
   },
   {
@@ -206,15 +206,19 @@ const FASES: FaseData[] = [
         ],
       },
       {
-        title: "Entrar nas campanhas",
+        title: "Crie uma conta no TikTok for Business (sua ferramenta de ads dentro do TikTok)",
         icon: Megaphone,
         items: [
-          "Acompanhe em Marketing > Campanhas todas as oportunidades de descontos financiados pelo TikTok",
+
+        ],
+        note: [
+          { label: "Link para criar a conta na central de negócios:", text: "Central de Negócios", href: "https://business.tiktok.com/", external: true },
+          { label: "Link para o Ads Manager (conta de anúncios):", text: "Ads Manager (GMV Max)", href: "https://ads.tiktok.com/i18n/gmv-max/welcome?aadvid=7510325651095470096", external: true },
         ],
       },
     ],
-    reward: "Até R$ 3.400 em cupons + impulsionamento",
-    rewardSub: "Incentivo de tráfego · 15% off cupom · comissão extra criadores",
+    reward: "Até R$ 3.400 em cupons",
+    rewardSub: "Incentivos de ads credits · participação em eventos do TikTok · suporte exclusivo ",
     rewardIcon: Coins,
   },
   {
@@ -257,8 +261,9 @@ const FASES: FaseData[] = [
         title: "Investir em tráfego (GMV Max)",
         icon: Zap,
         items: [
-          "Ativar GMV Max nos produtos com mais conteúdo",
-          "Investimento inicial sugerido: R$2.500/mês",
+          "Crie sua primeira campanha para seus produtos com mais conteúdos (min 30 videos por produto)",
+          "Investimento inicial sugerido: 2.500 reais",
+          { text: <>Garanta sua participação nas campanhas comerciais.<br />Acompanhe em: <strong>Marketing {">"} Campanhas</strong>. <br />Nesse caminho você encontrará todas as oportunidades co-financiadas pelo TikTok!</> }
         ],
         materials: [
           { title: "Assistir o webinar sobre GMV Max", url: "https://bytedance.sg.larkoffice.com/minutes/obsgaahwrem1hut18kqogot3", type: "webinar" },
@@ -266,7 +271,7 @@ const FASES: FaseData[] = [
       },
     ],
     reward: "Matching com Top Criadores + Ads Credits",
-    rewardSub: "Cashback em ads até R$ 4.000 · Cupons 30% off · comissão extra",
+    rewardSub: "Cupons exclusivos + Suporte extra para Lives + Suporte do time de GMV Max! ",
     rewardIcon: Target,
   },
   {
@@ -294,7 +299,7 @@ const FASES: FaseData[] = [
         title: "O que você ganha:",
         icon: Gift,
         items: [
-          { text: "Gerente de contas dedicado (TikTok)", icon: UserCheck },
+          { text: "Gerente de contas dedicado (TikTok for Business - GMV Max)", icon: UserCheck },
           { text: "Planejamento estratégico personalizado", icon: TrendingUp },
           { text: "Acesso antecipado a oportunidades e campanhas", icon: Flame },
           { text: "Suporte direto para escalar vendas mais rápido", icon: Lightbulb },
@@ -443,45 +448,50 @@ function MissionGroupCard({ group, fase, step, onImageClick }: {
           })}
         </ul>
         {group.note && (
-          <motion.a
-            href={group.note.href}
-            target={group.note.external ? "_blank" : undefined}
-            rel={group.note.external ? "noopener noreferrer" : undefined}
-            initial={{ scale: 1 }}
-            animate={{
-              scale: [1, 1.02, 1],
-              boxShadow: [
-                `0 4px 14px ${alpha(DS.glint, 0.3)}`,
-                `0 6px 20px ${alpha(DS.glint, 0.5)}`,
-                `0 4px 14px ${alpha(DS.glint, 0.3)}`
-              ]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2.5 mt-4 font-display font-black text-xs rounded-full px-5 py-3 transition-colors relative overflow-hidden group/btn"
-            style={{
-              backgroundColor: DS.glint,
-              color: DS.thrive,
-            }}
-            onClick={(e) => {
-              if (!group.note?.external) {
-                e.preventDefault();
-                document.querySelector(group.note!.href)?.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-          >
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:animate-shimmer" />
-
-            <MessageCircle size={15} strokeWidth={2.5} />
-            <span className="relative z-10">{group.note.text}</span>
-            <ChevronRight size={14} strokeWidth={3} className="transition-transform group-hover/btn:translate-x-1" />
-          </motion.a>
+          <div className="flex flex-col gap-3 mt-4">
+            {group.note.map((n, ni) => (
+              <div key={ni} className="flex flex-col gap-1.5">
+                {n.label && (
+                  <span className="font-body text-[0.75rem] font-medium" style={{ color: alpha(DS.thrive, 0.55) }}>{n.label}</span>
+                )}
+                <motion.a
+                  href={n.href}
+                  target={n.external ? "_blank" : undefined}
+                  rel={n.external ? "noopener noreferrer" : undefined}
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: [1, 1.02, 1],
+                    boxShadow: [
+                      `0 4px 14px ${alpha(fase.color, 0.3)}`,
+                      `0 6px 20px ${alpha(fase.color, 0.5)}`,
+                      `0 4px 14px ${alpha(fase.color, 0.3)}`
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: ni * 0.3,
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex w-fit items-center gap-2 font-display font-black text-xs rounded-full px-4 py-2.5 transition-colors relative overflow-hidden group/btn"
+                  style={{ backgroundColor: fase.color, color: fase.onColor }}
+                  onClick={(e) => {
+                    if (!n.external) {
+                      e.preventDefault();
+                      document.querySelector(n.href)?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:animate-shimmer" />
+                  <MessageCircle size={15} strokeWidth={2.5} />
+                  <span className="relative z-10">{n.text}</span>
+                  <ChevronRight size={14} strokeWidth={3} className="transition-transform group-hover/btn:translate-x-1" />
+                </motion.a>
+              </div>
+            ))}
+          </div>
         )}
       </div>
 
