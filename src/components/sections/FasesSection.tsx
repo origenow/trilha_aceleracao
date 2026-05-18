@@ -299,6 +299,7 @@ const FASES: FaseData[] = [
         title: "O que você ganha:",
         icon: Gift,
         items: [
+          { text: "Gerente de contas dedicado (TikTok)", icon: UserCheck },
           { text: "Gerente de contas dedicado (TikTok for Business - GMV Max)", icon: UserCheck },
           { text: "Planejamento estratégico personalizado", icon: TrendingUp },
           { text: "Acesso antecipado a oportunidades e campanhas", icon: Flame },
